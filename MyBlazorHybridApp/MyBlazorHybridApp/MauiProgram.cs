@@ -25,6 +25,12 @@ namespace MyBlazorHybridApp
             builder.Services.AddBlazorWebViewDeveloperTools();
             builder.Logging.AddDebug();
 #endif
+            builder.Services.AddScoped(sp => new HttpClient
+            {
+                BaseAddress = new Uri("https://10.0.2.2:5001/") // untuk Android Emulator
+                                                                // kalau Windows, tetap bisa pakai https://localhost:5001/
+            });
+
 
             return builder.Build();
         }
