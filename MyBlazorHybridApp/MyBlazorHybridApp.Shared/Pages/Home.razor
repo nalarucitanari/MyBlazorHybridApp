@@ -26,17 +26,22 @@
 </div>
 
 @code {
-    // private string factor => FormFactor.GetFormFactor();
-    // private string platform => FormFactor.GetPlatform();
-
     List<PizzaSpecial> specials = new();
 
     protected override async Task OnInitializedAsync()
     {
-        // specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>("specials");
-
-
-        specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>(NavigationManager.BaseUri + "specials");
+        try
+        {
+            var result = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>("https://localhost:7117/api/Specials");
+            if(result != null)
+            {
+                specials = result;
+            }
+        }
+        catch 
+        {
+            throw new Exception("Could not load pizza specials.");
+        }
     }
 }
 

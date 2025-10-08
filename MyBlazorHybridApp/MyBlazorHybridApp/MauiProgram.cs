@@ -18,6 +18,7 @@ namespace MyBlazorHybridApp
 
             // Add device-specific services used by the MyBlazorHybridApp.Shared project
             builder.Services.AddSingleton<IFormFactor, FormFactor>();
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7117")});
 
             builder.Services.AddMauiBlazorWebView();
 
