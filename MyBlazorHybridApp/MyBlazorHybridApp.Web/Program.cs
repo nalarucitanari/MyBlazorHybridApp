@@ -48,7 +48,7 @@ app.MapRazorComponents<App>()
 app.MapRazorPages();
 app.MapBlazorHub();
 //app.MapFallbackToPage("/_Host");
-app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+//app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
 
 var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
