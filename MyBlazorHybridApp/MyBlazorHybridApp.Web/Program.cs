@@ -1,7 +1,8 @@
+
+using MyBlazorHybridApp.Shared.Data;
 using MyBlazorHybridApp.Shared.Services;
 using MyBlazorHybridApp.Web.Components;
 using MyBlazorHybridApp.Web.Services;
-using MyBlazorHybridApp.Shared.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddServerSideBlazor();
 
 // Add device-specific services used by the MyBlazorHybridApp.Shared project
 builder.Services.AddSingleton<IFormFactor, FormFactor>();
+builder.Services.AddScoped<OrderState>();
+
 
 builder.Services.AddHttpClient();
 builder.Services.AddSqlite<PizzaStoreContext>("Data Source=pizza.db");
@@ -45,8 +48,8 @@ app.MapRazorComponents<App>()
         typeof(MyBlazorHybridApp.Shared._Imports).Assembly,
         typeof(MyBlazorHybridApp.Web.Client._Imports).Assembly);
 
-app.MapRazorPages();
-app.MapBlazorHub();
+//app.MapRazorPages();6
+//app.MapBlazorHub();
 //app.MapFallbackToPage("/_Host");
 app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
