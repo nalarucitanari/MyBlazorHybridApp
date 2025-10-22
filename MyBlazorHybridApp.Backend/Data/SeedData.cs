@@ -64,8 +64,12 @@ namespace MyBlazorHybridApp.Backend.Data
                 ImageUrl = "img/pizzas/margherita.jpg",
             },
             };
+            db.Specials.RemoveRange(db.Specials);
+            db.SaveChanges();
+
             db.Specials.AddRange(specials);
             db.SaveChanges();
+
         }
     }
 }

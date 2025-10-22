@@ -45,6 +45,11 @@ namespace MyBlazorHybridApp.Shared.Services
         {
             Order.Pizzas.Remove(pizza);
         }
+
+        public void ResetOrder()
+        {
+            Order = new Order();
+        }
     }
 }
 
